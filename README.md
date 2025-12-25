@@ -1,0 +1,2 @@
+# djangotutorial
+Ознакомление с django.
