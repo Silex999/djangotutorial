@@ -1,0 +1,63 @@
+<style>
+    .table-minimal {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #FFFFFF;
+  font-family: Arial, sans-serif;
+}
+
+.table-minimal thead {
+  background-color: #E3F2FD;
+}
+
+.table-minimal th {
+  padding: 12px 15px;
+  text-align: left;
+  font-weight: 600;
+  color: #333333;
+  border-bottom: 2px solid #E0E0E0;
+}
+
+.table-minimal td {
+  padding: 12px 15px;
+  color: #333333;
+  border-bottom: 1px solid #E0E0E0;
+}
+
+.table-minimal tbody tr:nth-child(even) {
+  background-color: #FAFAFA;
+}
+
+.table-minimal tbody tr:hover {
+  background-color: #F5F5F5;
+}
+</style>
+
+<h1>Выдачи</h1>
+
+{% if contracts %}
+<table class="table-minimal">
+    <tr style="background-color: #21252b;">
+        <th style="color:#fff">ID выдачи</th>
+        <th style="color:#fff">Номер выдачи</th>
+        <th style="color:#fff">ID клиента</th>
+        <th style="color:#fff">Дата подписания</th>
+        <th style="color:#fff">Место подписания</th>
+        <th style="color:#fff">Истечение срока </th>
+        <th style="color:#fff">Всего товаров</th>
+    </tr>
+    {% for offers in contracts %}
+    <tr>
+        <td>{{ offers.contract_id }}</td>
+        <td>{{ offers.contract_number }}</td>
+        <td>{{ offers.client_id }}</td>
+        <td>{{ offers.signing_date }}</td>
+        <td>{{ offers.signing_place }}</td>
+        <td>{{ offers.expiration_date }}</td>
+        <td>{{ offers.total_amount }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% else %}
+<p>Данные отсутствуют</p>
+{% endif %}

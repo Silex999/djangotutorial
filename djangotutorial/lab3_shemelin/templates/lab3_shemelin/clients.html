@@ -1,0 +1,63 @@
+<style>
+    .table-minimal {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #FFFFFF;
+  font-family: Arial, sans-serif;
+}
+
+.table-minimal thead {
+  background-color: #E3F2FD;
+}
+
+.table-minimal th {
+  padding: 12px 15px;
+  text-align: left;
+  font-weight: 600;
+  color: #333333;
+  border-bottom: 2px solid #E0E0E0;
+}
+
+.table-minimal td {
+  padding: 12px 15px;
+  color: #333333;
+  border-bottom: 1px solid #E0E0E0;
+}
+
+.table-minimal tbody tr:nth-child(even) {
+  background-color: #FAFAFA;
+}
+
+.table-minimal tbody tr:hover {
+  background-color: #F5F5F5;
+}
+</style>
+
+<h1>Список клиентов</h1>
+
+{% if clients %}
+<table class="table-minimal">
+    <tr style="background-color: #21252b;">
+        <th style="color:#fff">Фамилия</th>
+        <th style="color:#fff">Имя</th>
+        <th style="color:#fff">Отчество</th>
+        <th style="color:#fff">Паспорт</th>
+        <th style="color:#fff">Адрес</th>
+        <th style="color:#fff">Почта</th>
+        <th style="color:#fff">Телефон</th>
+    </tr>
+    {% for client in clients %}
+    <tr>
+        <td>{{ client.surname }}</td>
+        <td>{{ client.name }}</td>
+        <td>{{ client.patronymic }}</td>
+        <td>{{ client.passport }}</td>
+        <td>{{ client.address }}</td>
+        <td>{{ client.email }}</td>
+        <td>{{ client.phone }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% else %}
+<p>Данные отсутствуют</p>
+{% endif %}

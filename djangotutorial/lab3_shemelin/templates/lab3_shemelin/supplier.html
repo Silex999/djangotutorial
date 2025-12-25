@@ -1,0 +1,59 @@
+<style>
+    .table-minimal {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #FFFFFF;
+  font-family: Arial, sans-serif;
+}
+
+.table-minimal thead {
+  background-color: #E3F2FD;
+}
+
+.table-minimal th {
+  padding: 12px 15px;
+  text-align: left;
+  font-weight: 600;
+  color: #333333;
+  border-bottom: 2px solid #E0E0E0;
+}
+
+.table-minimal td {
+  padding: 12px 15px;
+  color: #333333;
+  border-bottom: 1px solid #E0E0E0;
+}
+
+.table-minimal tbody tr:nth-child(even) {
+  background-color: #FAFAFA;
+}
+
+.table-minimal tbody tr:hover {
+  background-color: #F5F5F5;
+}
+</style>
+
+<h1>Поставщики</h1>
+
+{% if suppliers %}
+<table class="table-minimal">
+    <tr style="background-color: #21252b;">
+        <th style="color:#fff">ID</th>
+        <th style="color:#fff">Имя поставщика</th>
+        <th style="color:#fff">Номер телефона</th>
+        <th style="color:#fff">Адрес компании</th>
+        <th style="color:#fff">Цена</th>
+    </tr>
+    {% for supplier in suppliers %}
+    <tr>
+        <td>{{ supplier.id }}</td>
+        <td>{{ supplier.title }}</td>
+        <td>{{ supplier.phone_number }}</td>
+        <td>{{ supplier.address }}</td>
+        <td>{{ supplier.price }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% else %}
+<p>Данные отсутствуют</p>
+{% endif %}
